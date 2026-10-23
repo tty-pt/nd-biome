@@ -1,6 +1,6 @@
 all := libnd-biome
 
-LDLIBS-libnd-biome := -lxylem
+LDLIBS-libnd-biome := -lxylem -laxil-nd
 
 
 # macOS ld rejects undefined symbols in shared libs, but WARN needs
