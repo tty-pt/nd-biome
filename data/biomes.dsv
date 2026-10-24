@@ -1,0 +1,20 @@
+# name|bg   (bg: black|red|yellow|green|cyan|blue|magenta|white)
+water|blue
+permanent ice|white
+tundra|cyan
+tundra2|cyan
+tundra3|cyan
+tundra4|cyan
+cold desert|cyan
+shrubland|green
+coniferous forest|green
+boreal forest|green
+temperate grassland|green
+woodland|green
+temperate seasonal forest|green
+temperate rainforest|green
+desert|yellow
+savannah|yellow
+tropical seasonal forest|green
+tropical rainforest|black
+volcanic|black

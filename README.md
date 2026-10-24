@@ -63,6 +63,30 @@ either way.
 * `nd_put(HD_BIOME, &ref, biome_map)` publishes the map under biome 16, which is
   where the world generator's biome ids start.
 
+## In-Game Commands (`man-src/`)
+
+None directly. Biome assignment is configured via `nd-world`'s `bio` command (`man-src/bio.10`).
+
+## Packaged Assets (`art/`)
+
+Defines the 19 room biome skeletons and tile types referenced by the world generator and `liblamina` tilemap renderers.
+
+## Wire Protocol & BCP Integration
+
+Biome metadata and room background colors serialize into `BCP_ROOM` frames emitted to pure-C isomorphic clients.
+
+## XY Bus Hooks & Dependencies
+
+* Populates `HD_SKEL` room skeletons and registers the global `HD_BIOME` mapping table.
+* Loads with zero inter-module dependencies; consumed by `nd-world` during room generation.
+
+## Modder Extension Guide
+
+To introduce a new biome:
+1. Extend the biome skeleton registration loop in `src/libnd-biome.c`.
+2. Define corresponding tile assets in `art/` or your region's custom tile sheet.
+3. Map the biome index to the `HD_BIOME` table during `xy_install()`.
+
 ## Testing
 
 There is no `test.sh` here. Behaviour is asserted by the engine's own suite,

@@ -40,28 +40,28 @@ biome_skel_add(const char *name, enum color bg)
 	return skid;
 }
 
+static int
+biome_row(const char *const *f, size_t n, void *user)
+{
+	static const char *const colors[] = {
+		"black", "red", "yellow", "green", "cyan", "blue", "magenta", "white"
+	};
+	enum color bg = BLACK;
+	(void)user;
+	if (n < 2)
+		return 0;
+	for (size_t i = 0; i < sizeof(colors) / sizeof(colors[0]); i++)
+		if (!strcmp(colors[i], f[1]))
+			bg = (enum color)i;
+	biome_skel_add(f[0], bg);
+	return 0;
+}
+
 XY_MODULE_API void
 xy_install(void)
 {
-	biome_skel_add("water", BLUE);
-	biome_skel_add("permanent ice", WHITE);
-	biome_skel_add("tundra", CYAN);
-	biome_skel_add("tundra2", CYAN);
-	biome_skel_add("tundra3", CYAN);
-	biome_skel_add("tundra4", CYAN);
-	biome_skel_add("cold desert", CYAN);
-	biome_skel_add("shrubland", GREEN);
-	biome_skel_add("coniferous forest", GREEN);
-	biome_skel_add("boreal forest", GREEN);
-	biome_skel_add("temperate grassland", GREEN);
-	biome_skel_add("woodland", GREEN);
-	biome_skel_add("temperate seasonal forest", GREEN);
-	biome_skel_add("temperate rainforest", GREEN);
-	biome_skel_add("desert", YELLOW);
-	biome_skel_add("savannah", YELLOW);
-	biome_skel_add("tropical seasonal forest", GREEN);
-	biome_skel_add("tropical rainforest", BLACK);
-	biome_skel_add("volcanic", BLACK);
+	if (nd_table_load("nd-biome", "biomes", biome_row, NULL) < 0)
+		WARN("nd-biome: biomes.dsv not found, no biomes loaded\n");
 
 	/* Biome 16 is where the world generator's biome ids start. */
 	unsigned ref = 16;

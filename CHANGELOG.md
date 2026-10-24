@@ -1,4 +1,20 @@
-## 1.0.0
+## [1.0.2]
+
+- **Declarative DSV Table (`data/biomes.dsv`)**:
+  - Exported 20 terrain and climate biomes into declarative `data/biomes.dsv` table.
+  - Refactored `src/libnd-biome.c` to load biome configurations dynamically via `nd_table_load()`.
+- **Documentation**:
+  - Standardized README with man-src, art, and modder guide.
+
+## [1.0.1]
+
+- **macOS: link with `-undefined dynamic_lookup`.** macOS `ld` rejects
+  undefined symbols in a shared library, but `WARN` needs `qsyslog` — an
+  engine-provided function pointer resolved at `dlopen` time (Linux allows
+  this by default). `-undefined dynamic_lookup` is the Darwin equivalent, set
+  as `LDFLAGS-libnd-biome-Darwin` so no other platform is affected.
+
+## [1.0.0]
 
 - **nd-biome is now an installable library rather than a build artifact of
   the engine.** It builds and installs exactly one file, `lib/libnd-biome.so`,
