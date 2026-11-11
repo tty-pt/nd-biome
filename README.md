@@ -2,10 +2,10 @@
 
 `nd-biome` for [axil-nd](../axil-nd), ported from SIC to libxylem.
 
-Builds the room skeletons for the 19 biomes and publishes the map that relates a
+Builds the room skeletons for the 20 biomes and publishes the map that relates a
 biome index to its skeleton. It implements no events at all — it is entirely a
 table, populated at load. Its job is to prove that install-shaped work survives
-the bus: 19 `HD_SKEL` registrations plus one `HD_BIOME`, with a `biome_skel_t`
+the bus: 20 `HD_SKEL` registrations plus one `HD_BIOME`, with a `biome_skel_t`
 payload `memcpy`'d into each skeleton's data words.
 
 ## Install
@@ -56,7 +56,7 @@ either way.
 
 ## What it does
 
-* `xy_install()` registers 19 `HD_SKEL` room skeletons, one per biome, each with
+* `xy_install()` registers 20 `HD_SKEL` room skeletons, one per biome, each with
   a background colour and the `TYPE_ROOM` type.
 * It fills `biome_map`, indexed by `BIOME_MAX`. That is a fixed-size,
   engine-provided array, not a module allocation.
@@ -69,7 +69,7 @@ None directly. Biome assignment is configured via `nd-world`'s `bio` command (`m
 
 ## Packaged Assets (`art/`)
 
-Defines the 19 room biome skeletons and tile types referenced by the world generator and `liblamina` tilemap renderers.
+Defines the 20 room biome skeletons and tile types referenced by the world generator and `liblamina` tilemap renderers.
 
 ## Wire Protocol & BCP Integration
 

@@ -1,3 +1,12 @@
+## [Unreleased] (target: v1.0.3)
+
+### Added
+- **Expanded Continental Biomes (`data/biomes.dsv`)**:
+  - Replaced redundant `tundra2`, `tundra3`, and `tundra4` entries with `alpine meadow`, `mediterranean`, and `wetland` biomes.
+
+### Changed
+- Refactored `stllog` logging comments, removed `add-prefix` Makefile paths, and cleaned module dependencies.
+
 ## [1.0.2]
 
 - **Declarative DSV Table (`data/biomes.dsv`)**:
@@ -9,7 +18,7 @@
 ## [1.0.1]
 
 - **macOS: link with `-undefined dynamic_lookup`.** macOS `ld` rejects
-  undefined symbols in a shared library, but `WARN` needs `qsyslog` — an
+  undefined symbols in a shared library, but `WARN` needs `stllog` — an
   engine-provided function pointer resolved at `dlopen` time (Linux allows
   this by default). `-undefined dynamic_lookup` is the Darwin equivalent, set
   as `LDFLAGS-libnd-biome-Darwin` so no other platform is affected.
